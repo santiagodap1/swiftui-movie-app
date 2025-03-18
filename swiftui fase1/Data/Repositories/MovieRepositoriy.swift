@@ -25,5 +25,10 @@ class MovieRepository {
     func getTopRatedMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
         apiService.fetchTopRatedMovies(completion: completion)
     }
+    
+    func getSimilarMovies(movieID: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        apiService.fetchSimilarMovies(movieID: movieID, completion: completion)
+    }
 
+    
 }

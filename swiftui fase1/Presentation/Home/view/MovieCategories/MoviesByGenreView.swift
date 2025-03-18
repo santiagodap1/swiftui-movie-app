@@ -14,7 +14,7 @@ struct MoviesByGenreView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             ForEach(viewModel.genres, id: \.id) { genre in
-                VStack(alignment: .leading, spacing: 10) {
+                LazyVStack(alignment: .leading, spacing: 10) {
                     Text(genre.name)
                         .font(.system(size: 28, weight: .bold, design: .default))
                         .foregroundColor(.yellow)
@@ -22,26 +22,10 @@ struct MoviesByGenreView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
+                        LazyHStack(spacing: 16) {
                             ForEach(viewModel.moviesByGenre[genre.id] ?? [], id: \.id) { movie in
                                 NavigationLink(destination: MovieDetails(movieID: movie.id)) {
-                                    VStack {
-                                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200/\(movie.posterPath ?? "")")) { image in
-                                            image.resizable().scaledToFill()
-                                        } placeholder: {
-                                            ProgressView()
-                                        }
-                                        .frame(width: 120, height: 180)
-                                        .cornerRadius(8)
-                                        .clipped()
-
-                                        Text(movie.title)
-                                            .font(.subheadline)
-                                            .lineLimit(1)
-                                            .foregroundColor(Color.white)
-                                            .bold()
-                                            .frame(width: 120)
-                                    }
+                                    MoviesByGenreCard(movie : movie)
                                 }
                             }
                         }

@@ -24,9 +24,13 @@ struct HomeView: View {
                 }
                 .padding(.top, 10)
             }
-            .navigationTitle("Sebastião's app")
-            .toolbarBackground(Color.gray.opacity(0.7), for: .navigationBar)
             .background(GradientBackgroundView())
+            
+            
+            
+            
         }
     }
 }
+
+

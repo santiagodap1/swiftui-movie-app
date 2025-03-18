@@ -51,6 +51,7 @@ class APIService {
         }
     }
     
+    
     func fetchMovieDetails(movieID: Int, completion: @escaping (Result<Movie, Error>) -> Void) {
         let urlString = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=\(apiKey)&language=en-US"
 
@@ -79,6 +80,7 @@ class APIService {
         }
     }
     
+    
     func fetchMoviesByGenre(genreID: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
         let urlString = "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)&with_genres=\(genreID)"
 
@@ -92,6 +94,7 @@ class APIService {
         }
     }
     
+    
     func fetchTopRatedMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
         let urlString = "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)&language=en-US&page=1"
         
@@ -104,6 +107,23 @@ class APIService {
             }
         }
     }
+    
+    
+    func fetchSimilarMovies(movieID: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        let urlString = "https://api.themoviedb.org/3/movie/\(movieID)/similar?api_key=\(apiKey)"
+        
+        fetchData(urlString: urlString) { (result: Result<MovieResponse, Error>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    
+    
 
 }
 

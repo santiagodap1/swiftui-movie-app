@@ -94,11 +94,12 @@ struct GradientModifier: ViewModifier {
                         Gradient.Stop(color: color.opacity(0), location: 0),
                         Gradient.Stop(color: color.opacity(0.2), location: 0.1),
                         Gradient.Stop(color: color.opacity(0.3), location: 0.15),
+                        Gradient.Stop(color: color.opacity(0.5), location: 0.22),
                         Gradient.Stop(color: color.opacity(0.7), location: 0.3),
                         Gradient.Stop(color: color.opacity(0.8), location: 0.35),
-                        Gradient.Stop(color: color.opacity(1), location: 0.5),
-                        Gradient.Stop(color: color.opacity(1.3), location: 0.75),
-                        Gradient.Stop(color: color.opacity(2), location: 1)
+                        Gradient.Stop(color: color.opacity(0.9), location: 0.5),
+                        Gradient.Stop(color: color.opacity(1.0), location: 0.75),
+                        Gradient.Stop(color: color.opacity(1.1), location: 1)
                     ],
                     startPoint: .top,
                     endPoint: .bottom

@@ -27,7 +27,7 @@ public struct MoviesList: View {
                 .listRowSeparator(.hidden)
             }
             .searchable(text: $searchText, prompt: "Search Movies")
-            
+            .preferredColorScheme(.dark)
             
             .onChange(of: searchText) {
                 viewModel.searchMovies(query: searchText)
@@ -36,7 +36,7 @@ public struct MoviesList: View {
             
             .navigationTitle("Movies")
             
-            .background(GradientBackgroundView())
+            .background(.black)
         }
     }
 

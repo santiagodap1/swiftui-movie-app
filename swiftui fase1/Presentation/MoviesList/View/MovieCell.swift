@@ -14,11 +14,21 @@ struct MovieCell: View {
 
     var body: some View {
         HStack(alignment: .top) {
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200/\(movie.posterPath ?? "")"))
-                .scaledToFill()
-                .frame(width: 80, height: 120)
-                .clipped()
-                .cornerRadius(10)
+            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200/\(movie.posterPath ?? "")")) { image in
+                image.resizable().scaledToFill()
+            } placeholder: {
+                ZStack {
+                    Color.gray.opacity(0.3)
+                    Image(systemName: "photo") 
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.white.opacity(0.7))
+                }
+            }
+            .frame(width: 80, height: 120)
+            .clipped()
+            .cornerRadius(10)
 
             VStack(alignment: .leading) {
                 if !movie.overview.isEmpty {
